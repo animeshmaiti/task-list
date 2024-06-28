@@ -1,5 +1,6 @@
 import express from "express";
 import  {configDotenv}  from "dotenv";
+import cookieParser from "cookie-parser";
 
 import mongoConnect from "./db/mongoConnect.js";
 import authRoutes from "./routes/authRoute.js";
@@ -11,6 +12,7 @@ const port = process.env.PORT;
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
