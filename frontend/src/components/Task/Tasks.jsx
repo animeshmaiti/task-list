@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { useTask } from "../hooks/uesTask";
+
 import { Task } from "./Task";
+import { useTask } from "../context/taskContext";
 
 export const Tasks = () => {
   const { getTasks,tasks } = useTask();
+
   useEffect(() => {
     getTasks();
-  }, []);
+  }, [getTasks]);
+
   return (
     <div className="w-1/2 flex flex-col gap-3 mt-4 max-h-[450px] overflow-y-auto">
       {tasks.map((task) => (
