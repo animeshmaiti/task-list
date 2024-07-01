@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export const useTask = () => {
     const [tasks, setTasks] = useState([]);
+
     const addTask = async (task) => {
         try {
             const response = await fetch('api/tasks/create-task', {
@@ -15,6 +16,7 @@ export const useTask = () => {
                 throw new Error(data.message || 'Could not add task');
             }
             const data = await response.json();
+            setTasks(tasks.concat(data));
         } catch (error) {
             console.error(error);
         }

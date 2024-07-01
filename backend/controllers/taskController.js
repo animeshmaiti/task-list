@@ -22,7 +22,7 @@ export const createTask = async (req, res) => {
 
 export const fetchTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({ user: req.user.id });
+        const tasks = await Task.find({ user: req.user.id }).sort({ createdAt: -1 });
         res.json(tasks);
     } catch (error) {
         console.log(error);

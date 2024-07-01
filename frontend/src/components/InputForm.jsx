@@ -3,7 +3,6 @@ import { useTask } from './hooks/uesTask';
 
 
 export const InputForm = () => {
-
   const { addTask } = useTask();
   const[task,setTask]= useState('');
 
