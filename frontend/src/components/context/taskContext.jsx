@@ -33,7 +33,7 @@ export const TaskProvider = ({ children }) => {
         if (!response.ok) {
           throw new Error(data.message || "Could not add task");
         }
-        
+
         getTasks();
       } catch (error) {
         console.error(error);
@@ -43,9 +43,9 @@ export const TaskProvider = ({ children }) => {
   );
 
   const updateStatus = useCallback(
-    async (id,status) => {
+    async (id, status) => {
       try {
-        console.log(id,status)
+        console.log(id, status);
         const response = await fetch(`api/tasks/update-status/${id}`, {
           method: "PUT",
           headers: {

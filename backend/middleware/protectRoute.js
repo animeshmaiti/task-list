@@ -3,8 +3,7 @@ import User from '../models/user.js';
 
 const protectRoute = async(req, res, next) => {
   try {
-    const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdkNzNjNzA5ZDYxZTY0NTViZjE3NjEiLCJpYXQiOjE3MTk3MjA0ODksImV4cCI6MTcyMTAxNjQ4OX0.DPMQen7qvT0T9ikveJAAsljT93YPItMoQIk_fIQDP-I"
-    // const token = req.cookies.token;
+    const token = req.cookies.token;
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
