@@ -1,15 +1,13 @@
 import { useAuth } from "./context/authContext";
 
 export const Navbar = () => {
-  const {Logout,authUser}=useAuth();
-  const fullName = authUser?.fullName || "User";
-  const logout=authUser?'Logout':'Login';
+  const { Logout, authUser } = useAuth();
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">Task List</a>
       </div>
-      <div className="flex-none gap-2">
+      {authUser?<div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -28,14 +26,14 @@ export const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <p className="justify-between">{fullName}</p>
+              <p className="justify-between">{authUser.fullName}</p>
             </li>
             <li>
-              <p onClick={Logout}>{logout}</p>
+              <p onClick={Logout}>Logout</p>
             </li>
           </ul>
         </div>
-      </div>
+      </div>:''}
     </div>
   );
 };
